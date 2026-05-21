@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe3e3 0%, #ffd1d1 100%);
+            color: #4a4a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #ff4b5c;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff4b5c;
+            animation: heartbeat 1.2s infinite;
+            margin: 20px 0;
+        }
+
+        .music-btn {
+            background-color: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 75, 92, 0.4);
+        }
+
+        .music-btn:hover {
+            transform: scale(1.05);
+            background-color: #e03e4f;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.1); }
+            40% { transform: scale(1.05); }
+            60% { transform: scale(1.15); }
+            80% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Nosso Espaço</h1>
+        <p>Bem-vindo ao nosso site de casal! Aqui começamos a escrever a nossa história no código e na vida.</p>
+        
+        <button class="music-btn" id="musicBtn">🎵 Play: Ser Humano ou Anjo</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().catch(htmlError => console.log("Erro ao tocar:", htmlError));
+                btn.innerHTML = "⏸️ Pausar Música";
+            } else {
+                music.pause();
+                btn.innerHTML = "🎵 Play: Ser Humano ou Anjo";
+            }
+        });
+    </script>
+
+</body>
+</html>
